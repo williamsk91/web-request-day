@@ -49,13 +49,22 @@ const config = {
       },
       footer: {
         style: "light",
-        copyright: `${new Date().getFullYear()} Online Book Publishing. Built with <3.`,
+        copyright: `${new Date().getFullYear()} Online Book Publishing`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
     }),
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+      },
+    ],
+  ],
 };
 
 module.exports = config;
