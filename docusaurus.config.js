@@ -40,10 +40,6 @@ const config = {
     ({
       navbar: {
         title: "A Day in the Life of a Web Page Request",
-        logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
-        },
       },
       hideableSidebar: true,
       prism: {
