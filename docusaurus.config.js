@@ -46,10 +46,6 @@ const config = {
         },
       },
       hideableSidebar: true,
-      footer: {
-        style: "light",
-        copyright: `${new Date().getFullYear()} Online Book Publishing`,
-      },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

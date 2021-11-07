@@ -17,10 +17,9 @@ I see you want to access the internet and go to this site called www.google.com
 
 > No, not really... Why did you even start talking to me? Who are you?
 
-Don't sweat the detail Bob. Here, let **ME** teach you what goes in the background
-from when you type www.google.com in your browser until you get this
+Don't sweat the detail Bob. Here, let **ME** teach you what goes in the background from when you type www.google.com in your browser until you get this
 
-{Google landing page image}
+![google](../static/map/google.png)
 
 > What?! I don't have time for this!
 
@@ -34,10 +33,9 @@ Here is our starting map. We will assume a few things
 
 - You are connected to the internet through an ethernet cable
 - You are in your school netwrork (hopefully studying hard)
-- Your internet service provider (ISP), the one you pay to access the internet,
-  is called Comcast
+- Your internet service provider (ISP), the one you pay to access the internet, is called Comcast
 
-<!-- {Starting map} -->
+![starting map](../static/map/start.png)
 
 > Huh, it's not as complicated as I expected
 
@@ -65,16 +63,15 @@ Exactly! Are you some kind of genius Bob?
 
 > Hehe 😏
 
-Moving on! When your computer connects to the internet, let's say through Ethernet,
-it runs a protocol to get an IP address.
+Moving on! When your computer connects to the internet, it runs a protocol to get an IP address.
 
 ## Dyanamic Host Control Protocol (DHCP)
 
-```
-{DHCP map and flow}
+![DHCP](../static/map/dhcp.png)
 
-Bob -> Switch -> Router
-```
+:::info DHCP route
+Bob -> Switch -> Router with DHCP server
+:::
 
 1. Your computer screams to every single connected device.
 
@@ -86,11 +83,10 @@ Bob -> Switch -> Router
    Switch: Bob is desperate for an IP address. Can someone give it
    to him?
 
-3. The router eventually hears this. Gets an IP address for you and sends it back.
-   This time not screaming to everyone as the router knows where you are through
-   your MAC address.
+3. A router that has DHCP server eventually hears this. Gets an IP address for you and sends it back. This time not screaming to everyone as the router knows where you are through your MAC address.
 
    Router: Bob, here is an IP address you can use
+
    Switch: Bob, here is an IP address you can use
 
 4. The information reaches you and you now have and IP address!
@@ -102,50 +98,40 @@ Bob -> Switch -> Router
 - First Hop Router's IP address
 - DNS server's IP address
 
-This set of steps to obtain an IP address is call **Dynamic Host Control Protocol
+This set of steps to obtain an IP address is called **Dynamic Host Control Protocol
 (DHCP)**. We will see that the internet is made up of many different protocols.
 
 > Cool~
 
-{Updated map with IP addresses}
+The DNS server will help you get the IP address of www.google.com. However, to reach it we need to go outside of our local network.
 
-The DNS server will help you get the IP address of www.google.com. However,
-to reach it we need to go outside of our local network.
+:::info DNS route
+Bob -> Switch -> Router -- (goes outside local network) -> Other Router -> DNS
+:::
 
-```
-Bob -> router -> other routers -> DNS
-```
-
-It's important to note that, to talk with devices within your network you use
-MAC addresses, while communicating outside you use IP addresses.
-
-And since the Router is within your network we will need its MAC address.
+It's important to note that, to talk with devices within your network you use MAC addresses, while communicating outside you use IP addresses. Since the Router is within your network we will need its MAC address.
 
 ## Adress Resolution Protocol (ARP)
 
 **Adress Resolution Protocol (ARP)** is used to translate IP addresses to
 MAC addresses.
 
-```
-{ARP map and flow}
+![ARP](../static/map/arp.png)
 
+:::info ARP route
 Bob -> Switch -> Router
-```
+:::
 
 1. Your computer once again screams to every single connected device.
 
-   Bob: Hi all! I'm Bob. Can someone at IP address give me their
+   Bob: Hi all! I'm Bob. Can someone at with 68.85.2.1 IP address give me their
    MAC address?
 
-2. The router once again hears this. Notice that the IP address being referred to
-   is it's own IP address. Then replies with it's MAC address.
+2. The router hears this. Notice that the IP address being referred to is it's own IP address. Then replies with it's MAC address.
 
-   Router: "O, that's me! Here's my MAC address, Bob"
+   Router: "O, that's me! Here's my MAC address"
 
-3. The information then travels back to you. You now have both the IP and MAC
-   addresses of the first hop router
-
-{Updated map with IP & MAC addresses}
+3. The information then travels back to you. You now have both the IP and MAC addresses of the first hop router
 
 ## Domain Name Service (DNS)
 
@@ -153,11 +139,11 @@ Bob -> Switch -> Router
 
 Indeed
 
-```
-{DNS map and flow}
+![DNS](../static/map/dns.png)
 
-Bob -> Switch -> Router -> other routers & switches -> DNS server
-```
+:::info DNS route
+Bob -> Switch -> Router -> Other Router -> DNS server
+:::
 
 1. Your computer writes a query message to the DNS server.
 
@@ -168,7 +154,7 @@ Bob -> Switch -> Router -> other routers & switches -> DNS server
 3. The DNS server look for this information in its database and returns a
    DNS record.
 
-   DNS: Bob, www.google.com lives at IP address
+   DNS: Bob, www.google.com lives at 172.217.31.225 IP address
 
 4. The message then travels back to you
 
@@ -176,28 +162,24 @@ Bob -> Switch -> Router -> other routers & switches -> DNS server
    The next time you write www.google.com your computer can use the same
    IP address and skip the entire DNS server trip!
 
-{Updated map with IP & MAC addresses & google IP}
-
 > Wow, long trip this time. What else do we need now?
 
-As a matter of fact, you are all set to contact www.google.com.
-You have your own, Google, and routers IP addresses. As well as our own and router's
-MAC address. We are ready!
+As a matter of fact, we are all set to contact www.google.com.
+You have your own, Google, and routers IP addresses. As well as our own and router's MAC address. We are ready!
 
 > let's goooooo!
 
 ## HyperText Transfer Protocol (HTTP)
 
-```
-{HTTP map and flow}
+![HTTP](../static/map/http.png)
 
+:::info HTTP route
+Bob -> Switch -> Routers -> Google
+:::
 
-Bob -> router -> router -> Google
-```
-
-1. The protocol used to send and receive web data is called HyperText Transfer
-   Protocol (HTTP), you might have heard it. Contrary to the other protocols we
-   have encountered so far, HTTP uses Tranmission Control Protocol (TCP) underneath the
+1. The protocol used to send and receive web data is called **HyperText Transfer
+   Protocol (HTTP)**, you might have heard it. Contrary to the other protocols we
+   have encountered so far, HTTP uses **Tranmission Control Protocol (TCP)** underneath the
    hood.
 
 > What difference does this make?
@@ -208,7 +190,7 @@ This adds an overhead before even asking google for data
 
    Bob: Hey google, available for some data transfer?
 
-   Google: Sure, for you, anything 😉 , Let's talk using this channel
+   Google: Sure, anything for you 😉 , Let's talk using this channel
 
    Bob: Fantastic, let's do that
 
@@ -236,10 +218,10 @@ devices are there for many different purposes, such as the DNS for translation.
 
 Yes, try entering [172.217.31.255](http://172.217.31.255) into your url bar. This is google's IP address and should work like normal.
 
-## Internet layers done separately
+## Internet Layers
 
 The Internet itself is made up of 5 distinct layers. Each built on top of each
-other.
+other. I have purposely not mentioned this at all to keep things simple. For more details, continue reading.
 
 | Layer       | Detail                                     | Examples                              |
 | ----------- | ------------------------------------------ | ------------------------------------- |
