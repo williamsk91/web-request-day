@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const remarkGfm = require("remark-gfm");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -21,7 +22,12 @@ const config = {
       "@docusaurus/preset-classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {},
+        docs: {
+          routeBasePath: "/",
+          remarkPlugins: [remarkGfm],
+        },
+        blog: false,
+        pages: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -38,15 +44,8 @@ const config = {
           alt: "My Site Logo",
           src: "img/logo.svg",
         },
-        items: [
-          {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Book",
-          },
-        ],
       },
+      hideableSidebar: true,
       footer: {
         style: "light",
         copyright: `${new Date().getFullYear()} Online Book Publishing`,
@@ -56,6 +55,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
   plugins: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
