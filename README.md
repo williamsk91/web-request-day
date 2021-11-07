@@ -1,14 +1,18 @@
-# Website
+# Info
+
+A simple website to show the life of a web page request.
+
+# Development
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-### Installation
+## Installation
 
 ```
 $ yarn
 ```
 
-### Local Development
+## Local Development
 
 ```
 $ yarn start
