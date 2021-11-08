@@ -40,6 +40,14 @@ const config = {
     ({
       navbar: {
         title: "A Day in the Life of a Web Page Request",
+        items: [
+          {
+            href: "https://github.com/williamsk91/web-request-day",
+            position: "right",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
+          },
+        ],
       },
       hideableSidebar: true,
       prism: {
